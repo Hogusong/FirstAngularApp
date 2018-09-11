@@ -10,7 +10,8 @@ export interface User {
   lastName: string,
   age: number,
   image?: string,
-  address?: Address
+  address?: Address,
+  isActive?: boolean
 }
 
 export interface Employee {

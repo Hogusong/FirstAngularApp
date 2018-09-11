@@ -9,9 +9,13 @@ import { User } from '../../models/models';
 export class UsersComponent implements OnInit {
   users: User[];
   loaded = false;
-  enableAdd = false;
+  enableAdd = true;
+  currentStyles = {};
+  showExtended = true;
 
-  constructor() { }
+  constructor() { 
+    this.setCurrentStyles();
+  }
 
   ngOnInit() {
     setTimeout(() => {
@@ -23,7 +27,8 @@ export class UsersComponent implements OnInit {
           street: '896 37th Ave',
           city: 'Dallas',
           state: 'TX'
-        }
+        },
+        isActive: true
       },
       {
         firstName: 'Narae',
@@ -34,7 +39,8 @@ export class UsersComponent implements OnInit {
           street: '1700 Hilliard Ct',
           city: 'Ambler',
           state: 'PA'
-        }
+        },
+        isActive: false
       },
       {
         firstName: 'Cassidy',
@@ -45,14 +51,16 @@ export class UsersComponent implements OnInit {
           street: '1904 24th Ave',
           city: 'Seattle',
           state: 'WA'
-        }
+        },
+        isActive: true
       }];
   
       this.addUser({
         firstName: 'David',
         lastName: 'Paker',
         image: 'http://lorempixel.com/600/600/people/3',
-        age: 37
+        age: 37,
+        isActive: false
       });
       // this.users = [];
       this.loaded = true;
@@ -61,5 +69,12 @@ export class UsersComponent implements OnInit {
 
   addUser(user: User) {
     this.users.push(user);
+  }
+
+  setCurrentStyles() {
+    this.currentStyles = {
+      'btn-select' : this.enableAdd,
+      'big-text': this.showExtended
+    }
   }
 }

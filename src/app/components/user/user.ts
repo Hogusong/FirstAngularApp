@@ -35,6 +35,6 @@ export class UserComponent {
   }
 
   sayName() {
-    return `Hello. My name is ${this.user.firstName} ${this.user.lastName}`;
+    return "Hello. My name is " + this.user.firstName + " " + this.user.lastName;
   }
 }
