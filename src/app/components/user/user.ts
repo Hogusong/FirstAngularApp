@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User, Employee } from '../../models/models';
 
 @Component({
   selector: 'app-user',
@@ -10,43 +11,30 @@ import { Component } from '@angular/core';
 
 export class UserComponent {
   // Properties
-  firstName: string;
-  lastName: string;
-  age:number;
-  address: object;
-  numArray: number[];
-  strArray: string[];
-  mixArray: any[];
-  myTuple: [string, number, boolean];
-  un: undefined;
+  user: User;     // use interface
+  employee: Employee;
+  birthday: Date;
 
   // Methods
   constructor() {
-    this.firstName = 'John';
-    this.lastName = 'Smith';
-    this.age = 30;
-    this.address = {
-      street: "8810 35th Ave NE",
-      city: "Seattle",
-      state: "WA",
-      country: "USA",
-      zipcode: '98940'
-    };
-    this.myTuple = ['hi', 112, true]
-  
-    this.increaseAge()
+    this.user = {
+      firstName: 'Narae',
+      lastName: 'Song',
+      age: 20,
+      address: {
+        street: '1904 24th Ave',
+        city: 'Seattle',
+        state: 'WA'
+      }
+    }
+    this.birthday = new Date('11/25/1963')
   }
 
   ngOnInit() {
-    this.increaseAge()
+
   }
 
   sayName() {
-    return `Hello everyone. My name is ${this.firstName} ${this.lastName}. (${this.un})`;
+    return `Hello everyone. My name is ${this.user.firstName} ${this.user.lastName}`;
   }
-
-  increaseAge() {
-    this.age += 1;
-  }
-
 }
