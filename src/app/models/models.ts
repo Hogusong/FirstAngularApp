@@ -1,14 +1,15 @@
+//  '?' : remark as optional
 export interface Address {
-  street: string,
-  city: string,
-  state: string
+  street?: string,
+  city?: string,
+  state?: string
 }
 
 export interface User {
   firstName: string,
   lastName: string,
   age: number,
-  address: Address
+  address?: Address
 }
 
 export interface Employee {
@@ -17,5 +18,5 @@ export interface Employee {
   birthday: Date,
   position: string,
   started: Date,
-  address: Address
+  address?: Address
 }
