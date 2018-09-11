@@ -1,12 +1,23 @@
 <h2>Users</h2>
+<button [disabled]="!enableAdd" class="btn btn-light btn-block mb-3">Add New User</button>
 <ul class="list-unstyled" *ngIf="loaded && users?.length > 0">
     <li class="card card-body mb-2" *ngFor="let user of users" >
-      <h4 *ngIf="user.age > 30" style="color:brown">{{user.firstName}} {{user.lastName}}</h4>
-      <h4 *ngIf="user.age < 31" style="color:blue">{{user.firstName}} {{user.lastName}}</h4>    
-      <ul class="list-group">
-        <li class="list-group-item">Age: {{user.age}}</li>
-        <li class="list-group-item" *ngIf="user.address">Address: {{user.address.street}}&nbsp;&nbsp;{{user.address.city}}, {{user.address.state}}</li>
-      </ul>
+      <div class="row">
+        <div class="col-sm-4">
+          <!-- <img *ngIf="user.image" class="img-fluid" [src]="user.image" alt=""> -->
+          <img *ngIf="user.image" class="img-fluid" src="{{user.image}}" alt="">
+          <!-- <img *ngIf="user.image" class="img-fluid" bind-src="user.image" alt=""> -->
+          <img *ngIf="!user.image" class="img-fluid" alt="No image">
+        </div>
+          <div class="col-sm-8">
+            <h4 *ngIf="user.age > 30" style="color:brown">{{user.firstName}} {{user.lastName}}</h4>
+            <h4 *ngIf="user.age < 31" style="color:blue">{{user.firstName}} {{user.lastName}}</h4>    
+            <ul class="list-group">
+              <li class="list-group-item">Age: {{user.age}}</li>
+              <li class="list-group-item" *ngIf="user.address">Address: {{user.address.street}}&nbsp;&nbsp;{{user.address.city}}, {{user.address.state}}</li>
+            </ul>    
+          </div>
+        </div>
     </li>
   </ul>
   <h4 *ngIf="!loaded" style="color:red">Loading Users</h4>

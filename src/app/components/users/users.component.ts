@@ -9,6 +9,7 @@ import { User } from '../../models/models';
 export class UsersComponent implements OnInit {
   users: User[];
   loaded = false;
+  enableAdd = false;
 
   constructor() { }
 
@@ -28,6 +29,7 @@ export class UsersComponent implements OnInit {
         firstName: 'Narae',
         lastName: 'Song',
         age: 20,
+        image: 'http://lorempixel.com/600/600/people/1',
         address: {
           street: '1700 Hilliard Ct',
           city: 'Ambler',
@@ -38,6 +40,7 @@ export class UsersComponent implements OnInit {
         firstName: 'Cassidy',
         lastName: 'Williams',
         age: 27,
+        image: 'http://lorempixel.com/600/600/people/7',
         address: {
           street: '1904 24th Ave',
           city: 'Seattle',
@@ -48,11 +51,12 @@ export class UsersComponent implements OnInit {
       this.addUser({
         firstName: 'David',
         lastName: 'Paker',
-        age: 37,
+        image: 'http://lorempixel.com/600/600/people/3',
+        age: 37
       });
       // this.users = [];
       this.loaded = true;
-    }, 1500)
+    }, 500)
   }
 
   addUser(user: User) {
