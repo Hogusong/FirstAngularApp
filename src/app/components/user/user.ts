@@ -31,7 +31,7 @@ export class UserComponent {
   }
 
   ngOnInit() {
-
+    this.user.age -= 1;
   }
 
   sayName() {
