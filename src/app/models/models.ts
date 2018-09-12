@@ -11,7 +11,9 @@ export interface User {
   age: number,
   image?: string,
   address?: Address,
-  isActive?: boolean
+  isActive?: boolean,
+  balance?: number,
+  registered?: Date,
 }
 
 export interface Employee {

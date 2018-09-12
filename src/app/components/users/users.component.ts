@@ -30,7 +30,9 @@ export class UsersComponent implements OnInit {
           city: 'Dallas',
           state: 'TX'
         },
-        isActive: true
+        isActive: true,
+        balance: 100,
+        registered: new Date('01/02/2018 08:30:00')
       },
       {
         firstName: 'Narae',
@@ -42,19 +44,24 @@ export class UsersComponent implements OnInit {
           city: 'Ambler',
           state: 'PA'
         },
-        isActive: false
+        isActive: false,
+        balance: 25,
+        registered: new Date("07/21/2015 15:11:11")
       },
       {
-        firstName: 'Cassidy',
-        lastName: 'Williams',
-        age: 27,
+        firstName: 'Lumana',
+        lastName: 'Rashid',
+        age: 37,
         image: 'http://lorempixel.com/600/600/people/7',
         address: {
-          street: '1904 24th Ave',
-          city: 'Seattle',
-          state: 'WA'
+          street: '1702 Dillon Rd',
+          city: 'Maple Glen',
+          state: 'PA'
         },
-        isActive: true
+        isActive: true,
+        balance: 125,
+        registered: new Date("01/15/2016 11:20:00")
+
       }];
   
       this.addUser({
@@ -62,7 +69,10 @@ export class UsersComponent implements OnInit {
         lastName: 'Paker',
         image: 'http://lorempixel.com/600/600/people/3',
         age: 37,
-        isActive: false
+        isActive: false,
+        balance: 225,
+        registered: new Date("10/21/2016 13:10:10")
+
       });
       // this.users = [];
       this.loaded = true;
