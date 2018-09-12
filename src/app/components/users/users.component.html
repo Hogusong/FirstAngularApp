@@ -1,7 +1,7 @@
 <h2>Users</h2>
-<button [disabled]="!enableAdd" class="btn btn-light btn-block mb-3" [ngClass]="currentStyles">Add New User</button>
+<button [disabled]="!enableAdd" class="btn btn-light btn-block mb-3" [ngClass]="currentClasses">Add New User</button>
 <ul class="list-unstyled" *ngIf="loaded && users?.length > 0">
-    <li class="card card-body mb-2" *ngFor="let user of users" [class.bg-light]="user.isActive">
+    <li class="card card-body mb-2" *ngFor="let user of users" [class.bg-light]="user.isActive" [style.border-color]="user.isActive? 'green' : ''">
       <div class="row">
         <div class="col-sm-4">
           <img *ngIf="user.image" class="img-fluid" [src]="user.image" alt="">
@@ -10,8 +10,8 @@
           <img *ngIf="!user.image" class="img-fluid" alt="No image">
         </div>
         <div class="col-sm-8">
-          <h4 *ngIf="user.age > 30" style="color:brown">{{user.firstName}} {{user.lastName}}</h4>
-          <h4 *ngIf="user.age < 31" style="color:blue">{{user.firstName}} {{user.lastName}}</h4>    
+          <h4 [ngStyle]="currentStyles" [style.color]="user.age > 30 ? 'brown' : 'red'">{{user.firstName}} {{user.lastName}}</h4>
+          <!-- <h4 *ngIf="user.age < 31" style="color:blue">{{user.firstName}} {{user.lastName}}</h4>     -->
           <ul *ngIf="showExtended" class="list-group">
             <li class="list-group-item">Age: {{user.age}}</li>
             <li class="list-group-item" *ngIf="user.address">Address: {{user.address.street}}&nbsp;&nbsp;{{user.address.city}}, {{user.address.state}}</li>

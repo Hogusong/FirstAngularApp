@@ -10,10 +10,12 @@ export class UsersComponent implements OnInit {
   users: User[];
   loaded = false;
   enableAdd = true;
+  currentClasses = {};
   currentStyles = {};
   showExtended = true;
 
   constructor() { 
+    this.setCurrentClasses();
     this.setCurrentStyles();
   }
 
@@ -71,10 +73,17 @@ export class UsersComponent implements OnInit {
     this.users.push(user);
   }
 
-  setCurrentStyles() {
-    this.currentStyles = {
+  setCurrentClasses() {
+    this.currentClasses = {
       'btn-select' : this.enableAdd,
       'big-text': this.showExtended
+    }
+  }
+
+  setCurrentStyles() {
+    this.currentStyles = {
+      'padding-top': this.showExtended ? '0' : '40px',
+      'font-size': this.showExtended ? '' : '40px',
     }
   }
 }
