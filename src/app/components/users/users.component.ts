@@ -23,6 +23,7 @@ export class UsersComponent implements OnInit {
       this.users = [{
         firstName: 'Mike',
         lastName: 'Park',
+        email: 'mike@yahoo.com',
         age: 44,
         address: {
           street: '896 37th Ave',
@@ -36,6 +37,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'Narae',
         lastName: 'Song',
+        email: 'narbar@cornell.com',
         age: 20,
         address: {
           street: '1700 Hilliard Ct',
@@ -49,6 +51,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'Lumana',
         lastName: 'Rashid',
+        email: 'rashid@saif.com',
         age: 37,
         address: {
           street: '1702 Dillon Rd',
@@ -63,6 +66,7 @@ export class UsersComponent implements OnInit {
       this.addUser({
         firstName: 'David',
         lastName: 'Paker',
+        email: 'paker@gmail.com',
         age: 37,
         isActive: false,
         registered: new Date("10/21/2016 13:10:10"),
@@ -84,6 +88,7 @@ export class UsersComponent implements OnInit {
       firstName: '',
       lastName: '',
       age: 0,
+      email: '',
       address: {
         street: '',  city: '',  state: ''
       },

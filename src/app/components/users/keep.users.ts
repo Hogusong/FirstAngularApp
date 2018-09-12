@@ -24,6 +24,7 @@ export class UsersComponent implements OnInit {
       this.users = [{
         firstName: 'Mike',
         lastName: 'Park',
+        email: 'mike@yahoo.com',
         age: 44,
         address: {
           street: '896 37th Ave',
@@ -31,48 +32,46 @@ export class UsersComponent implements OnInit {
           state: 'TX'
         },
         isActive: true,
-        balance: 100,
-        registered: new Date('01/02/2018 08:30:00')
+        registered: new Date('01/02/2018 08:30:00'),
+        hide: true
       },
       {
         firstName: 'Narae',
         lastName: 'Song',
+        email: 'narbar@cornell.com',
         age: 20,
-        image: 'http://lorempixel.com/600/600/people/1',
         address: {
           street: '1700 Hilliard Ct',
           city: 'Ambler',
           state: 'PA'
         },
         isActive: false,
-        balance: 25,
-        registered: new Date("07/21/2015 15:11:11")
+        registered: new Date("07/21/2015 15:11:11"),
+        hide: true
       },
       {
         firstName: 'Lumana',
         lastName: 'Rashid',
+        email: 'rashid@saif.com',
         age: 37,
-        image: 'http://lorempixel.com/600/600/people/7',
         address: {
           street: '1702 Dillon Rd',
           city: 'Maple Glen',
           state: 'PA'
         },
         isActive: true,
-        balance: 125,
-        registered: new Date("01/15/2016 11:20:00")
-
+        registered: new Date("01/15/2016 11:20:00"),
+        hide: false
       }];
   
       this.addUser({
         firstName: 'David',
         lastName: 'Paker',
-        image: 'http://lorempixel.com/600/600/people/3',
+        email: 'paker@gmail.com',
         age: 37,
         isActive: false,
-        balance: 225,
-        registered: new Date("10/21/2016 13:10:10")
-
+        registered: new Date("10/21/2016 13:10:10"),
+        hide: true
       });
       // this.users = [];
       this.loaded = true;
@@ -81,6 +80,7 @@ export class UsersComponent implements OnInit {
 
   addUser(user: User) {
     this.users.push(user);
+    // this.inIt()
   }
 
   setCurrentClasses() {
