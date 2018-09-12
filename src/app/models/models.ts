@@ -8,12 +8,13 @@ export interface Address {
 export interface User {
   firstName: string,
   lastName: string,
-  age: number,
+  age?: number,
   image?: string,
   address?: Address,
   isActive?: boolean,
   balance?: number,
   registered?: Date,
+  hide?: boolean
 }
 
 export interface Employee {
