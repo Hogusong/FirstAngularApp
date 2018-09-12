@@ -7,15 +7,15 @@ import { User } from '../../models/models';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  user: User ;
   users: User[];
   loaded = false;
   enableAdd = true;
   showExtended = true;
   showEditForm = false;
-  firstName = '';
 
   constructor() { 
-
+    this.inIt();
   }
 
   ngOnInit() {
@@ -75,12 +75,28 @@ export class UsersComponent implements OnInit {
 
   addUser(user: User) {
     this.users.push(user);
+    this.inIt()
+    this.showEditForm = false;
+  }
+
+  inIt() {
+    this.user = {
+      firstName: '',
+      lastName: '',
+      age: 0,
+      address: {
+        street: '',  city: '',  state: ''
+      },
+      registered: new Date(),
+      isActive: true,
+      hide: false,
+    }
   }
 
   fireEvent(e) {
     console.log('Key pressed', e)
-    this.firstName = this.firstName + e.key;
-    console.log(this.firstName);
+    this.user.firstName = this.user.firstName + e.key;
+    console.log(this.user.firstName);
   }
 
   toggleHide(target) {
@@ -96,6 +112,7 @@ export class UsersComponent implements OnInit {
   }
 
   onSubmit(e) {
-    console.log(e)
+    e.preventDefault();
+    console.log(e);
   }
 }
