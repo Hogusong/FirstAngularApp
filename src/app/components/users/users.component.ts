@@ -11,6 +11,8 @@ export class UsersComponent implements OnInit {
   loaded = false;
   enableAdd = true;
   showExtended = true;
+  showEditForm = false;
+  firstName = '';
 
   constructor() { 
 
@@ -76,7 +78,9 @@ export class UsersComponent implements OnInit {
   }
 
   fireEvent(e) {
-    console.log('Button Clicked', e)
+    console.log('Key pressed', e)
+    this.firstName = this.firstName + e.key;
+    console.log(this.firstName);
   }
 
   toggleHide(target) {
@@ -89,5 +93,9 @@ export class UsersComponent implements OnInit {
     //     break;
     //   }
     // }
+  }
+
+  onSubmit(e) {
+    console.log(e)
   }
 }
