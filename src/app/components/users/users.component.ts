@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../models/models';
 
 @Component({
@@ -13,9 +13,10 @@ export class UsersComponent implements OnInit {
   enableAdd = true;
   showExtended = true;
   showEditForm = false;
+  @ViewChild('userForm') form: any;
 
   constructor() { 
-    this.inIt();
+    this.inItUser();
   }
 
   ngOnInit() {
@@ -52,35 +53,32 @@ export class UsersComponent implements OnInit {
         registered: new Date("10/21/2016 13:10:10"),
         hide: true
       }];
-      // this.users = [];
       this.loaded = true;
     }, 500)
   }
 
-  // addUser(user: User) {
-  //   this.users.push(user);
-  //   this.inIt()
-  //   this.showEditForm = false;
-  // }
-
-  inIt() {
+  inItUser() {
     this.user = {
       firstName: '',
       lastName: '',
-      email: '',
-      registered: new Date(),
-      isActive: true,
-      hide: false,
+      email: ''
     }
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-    console.log(e);
+  onSubmit({value, valid}) {
+    if (!valid) {
+      console.log('Form is not valid');
+    } else {
+      value.isActive = true;
+      value.registered = new Date();
+      value.hide = true;
+      this.users.unshift(value);
+      this.form.reset();
+    }
   }
 
   toggleNewBtn() {
     this.showEditForm=!this.showEditForm
-    if (!this.showEditForm) this.inIt()
+    if (!this.showEditForm) this.inItUser()
   }
 }
