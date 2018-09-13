@@ -24,12 +24,6 @@ export class UsersComponent implements OnInit {
         firstName: 'Mike',
         lastName: 'Park',
         email: 'mike@yahoo.com',
-        age: 44,
-        address: {
-          street: '896 37th Ave',
-          city: 'Dallas',
-          state: 'TX'
-        },
         isActive: true,
         registered: new Date('01/02/2018 08:30:00'),
         hide: true
@@ -38,12 +32,6 @@ export class UsersComponent implements OnInit {
         firstName: 'Narae',
         lastName: 'Song',
         email: 'narbar@cornell.com',
-        age: 20,
-        address: {
-          street: '1700 Hilliard Ct',
-          city: 'Ambler',
-          state: 'PA'
-        },
         isActive: false,
         registered: new Date("07/21/2015 15:11:11"),
         hide: true
@@ -52,72 +40,47 @@ export class UsersComponent implements OnInit {
         firstName: 'Lumana',
         lastName: 'Rashid',
         email: 'rashid@saif.com',
-        age: 37,
-        address: {
-          street: '1702 Dillon Rd',
-          city: 'Maple Glen',
-          state: 'PA'
-        },
         isActive: true,
         registered: new Date("01/15/2016 11:20:00"),
-        hide: false
-      }];
-  
-      this.addUser({
+        hide: true
+      },
+      {
         firstName: 'David',
         lastName: 'Paker',
         email: 'paker@gmail.com',
-        age: 37,
         isActive: false,
         registered: new Date("10/21/2016 13:10:10"),
         hide: true
-      });
+      }];
       // this.users = [];
       this.loaded = true;
     }, 500)
   }
 
-  addUser(user: User) {
-    this.users.push(user);
-    this.inIt()
-    this.showEditForm = false;
-  }
+  // addUser(user: User) {
+  //   this.users.push(user);
+  //   this.inIt()
+  //   this.showEditForm = false;
+  // }
 
   inIt() {
     this.user = {
       firstName: '',
       lastName: '',
-      age: 0,
       email: '',
-      address: {
-        street: '',  city: '',  state: ''
-      },
       registered: new Date(),
       isActive: true,
       hide: false,
     }
   }
 
-  fireEvent(e) {
-    console.log('Key pressed', e)
-    this.user.firstName = this.user.firstName + e.key;
-    console.log(this.user.firstName);
-  }
-
-  toggleHide(target) {
-    target.hide = !target.hide
-    // for (let i=0; i<this.users.length; i++) {
-    //   let user = this.users[i];
-    //   if (user.firstName === target.firstName && user.lastName === target.lastName) {
-    //     user.hide = !user.hide;
-    //     this.users[i] = user;
-    //     break;
-    //   }
-    // }
-  }
-
   onSubmit(e) {
     e.preventDefault();
     console.log(e);
+  }
+
+  toggleNewBtn() {
+    this.showEditForm=!this.showEditForm
+    if (!this.showEditForm) this.inIt()
   }
 }
