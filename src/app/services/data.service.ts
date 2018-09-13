@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 import { User } from '../models/models';
 
@@ -7,6 +8,7 @@ import { User } from '../models/models';
 })
 export class DataService {
   users: User[];
+  data: Observable<any>;
 
   constructor() { 
     this.users = [{
@@ -43,8 +45,39 @@ export class DataService {
     }];
   }
 
-  getUsers(): User[] {
-    return this.users
+  getData() {
+    this.data = new Observable(observer => {
+      const seq = ['a', 1, 'b', 3, 'c', {name:'John Smith'}];
+      const doSequence = function(arr, idx) {
+        setTimeout(() => {
+          observer.next(arr[idx]);
+          if (idx === arr.length - 1) {
+            observer.complete();
+          } else {
+            doSequence(arr, ++idx);
+          }
+        }, 1000)
+      }
+      doSequence(seq, 0)
+
+      // setTimeout(() => {
+      //   observer.next('a');
+      // }, 1000)
+      // setTimeout(() => {
+      //   observer.next('b');
+      // }, 2000)
+      // setTimeout(() => {
+      //   observer.next('c');
+      // }, 3000)
+      // setTimeout(() => {
+      //   observer.next('d');
+      // }, 4000)
+    })
+    return this.data;
+  }
+
+  getUsers(): Observable<User[]> {
+    return of(this.users);
   }
 
   addUser(user: User) {

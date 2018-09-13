@@ -15,14 +15,20 @@ export class UsersComponent implements OnInit{
   showExtended = true;
   showEditForm = false;
   @ViewChild('userForm') form: any;
+  data: any;
 
   constructor(private dataService: DataService) { 
     this.inItUser();
   }
 
   ngOnInit() {
-    this.users = this.dataService.getUsers();
-    this.loaded = true;
+    this.dataService.getData().subscribe(data => {
+      console.log(data)
+    })
+    this.dataService.getUsers().subscribe(users => {
+      this.users = users;
+      this.loaded = true;
+    });
   }
 
   inItUser() {
