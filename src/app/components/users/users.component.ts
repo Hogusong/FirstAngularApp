@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { DataService } from '../../services/data.service';
 import { User } from '../../models/models';
 
 @Component({
@@ -6,7 +7,7 @@ import { User } from '../../models/models';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit{
   user: User ;
   users: User[];
   loaded = false;
@@ -15,46 +16,13 @@ export class UsersComponent implements OnInit {
   showEditForm = false;
   @ViewChild('userForm') form: any;
 
-  constructor() { 
+  constructor(private dataService: DataService) { 
     this.inItUser();
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.users = [{
-        firstName: 'Mike',
-        lastName: 'Park',
-        email: 'mike@yahoo.com',
-        isActive: true,
-        registered: new Date('01/02/2018 08:30:00'),
-        hide: true
-      },
-      {
-        firstName: 'Narae',
-        lastName: 'Song',
-        email: 'narbar@cornell.com',
-        isActive: false,
-        registered: new Date("07/21/2015 15:11:11"),
-        hide: true
-      },
-      {
-        firstName: 'Lumana',
-        lastName: 'Rashid',
-        email: 'rashid@saif.com',
-        isActive: true,
-        registered: new Date("01/15/2016 11:20:00"),
-        hide: true
-      },
-      {
-        firstName: 'David',
-        lastName: 'Paker',
-        email: 'paker@gmail.com',
-        isActive: false,
-        registered: new Date("10/21/2016 13:10:10"),
-        hide: true
-      }];
-      this.loaded = true;
-    }, 500)
+    this.users = this.dataService.getUsers();
+    this.loaded = true;
   }
 
   inItUser() {
@@ -72,7 +40,8 @@ export class UsersComponent implements OnInit {
       value.isActive = true;
       value.registered = new Date();
       value.hide = true;
-      this.users.unshift(value);
+
+      this.dataService.addUser(value);
       this.form.reset();
     }
   }
