@@ -6,3 +6,9 @@ export interface User {
   registered?: Date,
   hide?: boolean
 }
+
+export interface Post {
+  id: number,
+  title: string,
+  body: string
+}
