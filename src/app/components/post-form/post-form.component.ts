@@ -25,6 +25,7 @@ export class PostFormComponent implements OnInit {
   addPost(title, body) {
     if (title && body) {
       this.postService.savePost({ title, body } as Post).subscribe(post => {
+        console.log(post)
         this.newPost.emit(post);
       });
     } else {

@@ -26,6 +26,7 @@ export class PostService {
 
   updatePost(post: Post): Observable<Post> {
     const postUrl = `${this.postsUrl}/${post.id}`;
-    return this.http.put<Post>(postUrl, post, httpOptions);
+    return post.id > 100 ? new Observable(obs => { obs.next(post)}) : 
+                    this.http.put<Post>(postUrl, post, httpOptions) ;
   }
 }
