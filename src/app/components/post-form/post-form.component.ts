@@ -10,6 +10,8 @@ import { Post } from '../../models/models';
 })
 export class PostFormComponent implements OnInit {
   @Output() newPost: EventEmitter<Post> = new EventEmitter();
+  @Output() updatedPost: EventEmitter<Post> = new EventEmitter();
+  @Output() canceledPost: EventEmitter<Post> = new EventEmitter();
   @Input() currentPost: Post;
   @Input() isEdit: boolean;
 
@@ -24,15 +26,20 @@ export class PostFormComponent implements OnInit {
     if (title && body) {
       this.postService.savePost({ title, body } as Post).subscribe(post => {
         this.newPost.emit(post);
-        console.log(post)
       });
     } else {
       alert('Please add post')
     }
   }
 
-  updatePost(title, body) {
-    console.log({ title, body })
-  
+  updatePost() {
+    this.postService.updatePost(this.currentPost).subscribe(post => {
+      console.log(post);
+      this.updatedPost.emit(post)
+    });
+  }
+
+  canceled() {
+    this.canceledPost.emit()
   }
 }
