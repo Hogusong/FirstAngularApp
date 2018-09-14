@@ -25,8 +25,15 @@ export class PostService {
   }
 
   updatePost(post: Post): Observable<Post> {
-    const postUrl = `${this.postsUrl}/${post.id}`;
+    const url = `${this.postsUrl}/${post.id}`;
     return post.id > 100 ? new Observable(obs => { obs.next(post)}) : 
-                    this.http.put<Post>(postUrl, post, httpOptions) ;
+                    this.http.put<Post>(url, post, httpOptions) ;
+  }
+
+  removePost(post: Post | number): Observable<Post> {
+    const id = typeof post === 'number' ? post : post.id ;
+    const url = `${this.postsUrl}/${id}`;
+    return id > 100 ? new Observable(obs => { obs.next()}) :   
+            this.http.delete<Post>(url, httpOptions);
   }
 }
